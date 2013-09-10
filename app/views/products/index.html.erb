@@ -1,0 +1,10 @@
+<h1>Products</h1> 
+<%= link_to "New and upcomming products", "/products/new" %>
+
+
+<%# this is a comment %>
+<% @products.each do |product| %>
+  <p><%= product[:title] %>, <%= product[:artist] %></p>
+ 
+  
+<% end %>	
