@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  # GET /products
+  # GET /products.json
   def index
     @products = Product.all
 
@@ -35,10 +37,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(product_params)
 
     respond_to do |format|
       if @product.save
@@ -54,7 +57,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
+    @product = Product.find(product_params)
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
@@ -77,5 +80,11 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def product_params
+     params.require(:product).permit(:description, :name, :price_in_cents)
   end
 end

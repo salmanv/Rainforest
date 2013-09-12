@@ -1,2 +1,12 @@
 <h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<%= link_to "New and upcomming products", "/products/new" %>
+
+
+
+<p>
+	<%= @product[:name] %>
+	<%= @product[:description] %>
+	<%= @product.formatted_price %>
+</p>
+
+#Find me in app/views/products/show.html.erb

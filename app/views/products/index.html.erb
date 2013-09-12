@@ -4,7 +4,9 @@
 
 <%# this is a comment %>
 <% @products.each do |product| %>
-  <p><%= product[:title] %>, <%= product[:artist] %></p>
- 
-  
+  <p><%= product[:name] %>, 
+  	<%= product[:description] %>,
+  <%= product.formatted_price %>
+
+</p>
 <% end %>	
