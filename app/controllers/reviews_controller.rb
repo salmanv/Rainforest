@@ -1,5 +1,10 @@
 class ReviewsController < ApplicationController
 	before_filter :load_product
+	before_filter :ensure_logged_in, :only => [:edit, :create, :show, :update, :destroy]
+
+	def show
+		@review = Review.find(params[:id])
+	end
 
   def 
   	@review = Review.find(params[:id])
@@ -27,9 +32,8 @@ class ReviewsController < ApplicationController
   	@product = Product.find(params[:product_id])
   end
 
-  def new
-  end
+  def review_params
+  	params.require(:review).permit(:comment, :user_id, :product_id)
 
-  def edit
-  end
+  
 end
