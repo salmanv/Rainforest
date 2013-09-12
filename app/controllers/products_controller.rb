@@ -15,6 +15,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
+    if current_user
+      @review = @product.review.build
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -36,7 +40,7 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
-
+end
 
   # POST /products
   # POST /products.json
